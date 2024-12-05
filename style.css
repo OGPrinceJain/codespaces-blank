@@ -5,11 +5,53 @@
     box-sizing: border-box;
 }
 
+/* CSS Variables for Light & Dark Mode */
+:root {
+    --bg-color-light: #ffffff;
+    --bg-color-dark: #121212;
+    --text-color-light: #000000;
+    --text-color-dark: #ffffff;
+    --link-color-light: #000000;
+    --link-color-dark: #ffffff;
+    --button-bg-light: #000000;
+    --button-bg-dark: #ffffff;
+    --button-text-light: #ffffff;
+    --button-text-dark: #000000;
+    --icon-color-light: #000000; /* Black for light mode */
+    --icon-color-dark: #ffffff;  /* White for dark mode */
+    --scrollbar-bg: #b0b0b0; /* Cool grey background */
+    --scrollbar-thumb: #7f7f7f; /* Cool grey thumb */
+    --scrollbar-thumb-hover: #616161; /* Darker cool grey when hovered */
+}
+
 /* Body Styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-bg); /* Background color of the scrollbar track */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb); /* Thumb color */
+    border-radius: 10px;
+    border: 3px solid var(--scrollbar-bg); /* Space between thumb and track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover); /* Darker thumb when hovered */
 }
 
 /* Navigation Bar */
@@ -27,7 +69,7 @@ body {
 .navbar .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: black; /* Neutral logo color */
+    color: var(--text-color-light);
     text-decoration: none;
 }
 
@@ -43,7 +85,7 @@ body {
 
 .navbar .nav-links a {
     text-decoration: none;
-    color: black; /* Black link color */
+    color: var(--link-color-light);
     font-size: 1rem;
     font-weight: 500;
     position: relative;
@@ -51,7 +93,7 @@ body {
 }
 
 .navbar .nav-links a:hover {
-    color: black; /* Maintain black text color */
+    color: var(--link-color-light);
 }
 
 /* Underline Animation */
@@ -60,7 +102,7 @@ body {
     display: block;
     width: 0;
     height: 2px;
-    background: black; /* Black underline */
+    background: var(--text-color-light);
     transition: width 0.3s ease;
     position: absolute;
     left: 0;
@@ -68,7 +110,14 @@ body {
 }
 
 .navbar .nav-links a:hover::after {
-    width: 100%; /* Full-width underline on hover */
+    width: 100%;
+}
+
+/* Hamburger Icon for Mobile */
+.menu-icon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 /* Heading Section */
@@ -99,8 +148,8 @@ body {
 #btn button {
     border: none;
     border-radius: 500px;
-    background-color: black; /* Black background */
-    color: white; /* White text */
+    background-color: var(--button-bg-light);
+    color: var(--button-text-light);
     font-weight: 500;
     font-size: 1rem;
     padding: 10px 20px;
@@ -109,8 +158,8 @@ body {
 }
 
 #btn button:hover {
-    background-color: white; /* Invert colors on hover */
-    color: black;
+    background-color: var(--button-bg-dark);
+    color: var(--button-text-dark);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -118,108 +167,15 @@ body {
     transform: scale(0.95);
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-links li::before {
-        content: '•';
-        font-size: 1.2rem;
-        color: black; /* Black dots for smaller screens */
-        margin-right: 10px;
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: all 0.3s ease;
-    }
-
-    .nav-links li:hover::before {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 /* Footer Styling */
 .footer {
-    color: black; /* Change text color to black */
+    color: var(--text-color-light);
     padding: 40px 20px;
-    background-color: transparent; /* Remove background color */
+    background-color: transparent;
     text-align: center;
 }
 
-/* Footer Container */
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-/* Footer Columns */
-.footer-col {
-    flex: 1;
-    margin: 20px;
-    min-width: 200px;
-}
-
-/* Footer Column Title */
-.footer-col h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: black; /* Ensures heading color is black */
-    position: relative; /* Position for underline effect */
-}
-
-.footer-col h3::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background: black;
-    transition: width 0.3s ease;
-    position: absolute;
-    left: 0;
-    bottom: -5px; /* Position the underline just below the text */
-}
-
-/* Footer Column Link Styling */
-.footer-col ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-col ul li {
-    margin: 8px 0;
-}
-
-.footer-col ul li a {
-    text-decoration: none;
-    color: black; /* Change link color to black */
-    font-size: 1rem;
-    position: relative; /* So we can position the underline below text */
-    transition: color 0.3s ease;
-}
-
-/* Remove blue color on hover, only show black underline */
-.footer-col ul li a::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background: black;
-    transition: width 0.3s ease;
-    position: absolute;
-    left: 0;
-    bottom: -5px; /* Position the underline just below the text */
-}
-
-.footer-col ul li a:hover::after {
-    width: 100%; /* Expand the underline on hover */
-}
-
-/* Social Media Icons */
+/* Footer Social Icons */
 .footer-social {
     margin-top: 40px;
 }
@@ -231,40 +187,104 @@ body {
 }
 
 .social-icons a {
-    font-size: 30px; /* Icon size */
-    color: black; /* Icon color */
-    transition: transform 0.3s ease; /* Only apply transform effect */
-    text-decoration: none; /* Ensure no underline */
+    font-size: 30px;
+    color: var(--icon-color-light);
+    transition: transform 0.3s ease;
+    text-decoration: none;
 }
 
-/* Hover effect for social media icons - no color change, only zoom */
 .social-icons a:hover {
-    transform: scale(1.2); /* Slight zoom effect */
+    transform: scale(1.2);
 }
 
 /* Footer Bottom */
 .footer-bottom {
     margin-top: 20px;
     font-size: 1rem;
-    color: black; /* Ensures the copyright text is black */
+    color: var(--text-color-light);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .navbar .logo,
+body.dark-mode .navbar .nav-links a {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .navbar .nav-links a::after {
+    background: var(--text-color-dark);
+}
+
+body.dark-mode #btn button {
+    background-color: var(--button-bg-dark);
+    color: var(--button-text-dark);
+}
+
+body.dark-mode .footer {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .footer-social a {
+    color: var(--icon-color-dark);
+}
+
+body.dark-mode .footer-bottom {
+    color: var(--text-color-dark);
+}
+
+/* Mode Toggle Button */
+.mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--bg-color-light);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mode-toggle i {
+    font-size: 24px;
+    color: var(--icon-color-light);
+}
+
+/* Dark Mode Button Styles */
+body.dark-mode .mode-toggle {
+    background-color: var(--bg-color-dark);
+}
+
+body.dark-mode .mode-toggle i {
+    color: var(--icon-color-dark);
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-    .footer-container {
+    .navbar .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-color-light);
+        display: none;
         flex-direction: column;
-        align-items: center;
+        gap: 10px;
+        padding: 20px;
     }
 
-    .footer-col {
-        margin-bottom: 30px;
+    .navbar .nav-links li {
+        text-align: center;
     }
 
-    .footer-social {
-        margin-top: 30px;
+    .navbar .nav-links.active {
+        display: flex;
     }
 
-    .social-icons {
-        gap: 20px;
+    .menu-icon {
+        display: block;
     }
 }
