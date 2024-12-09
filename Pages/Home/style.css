@@ -8,7 +8,7 @@
 /* CSS Variables for Light & Dark Mode */
 :root {
     --bg-color-light: #ffffff;
-    --bg-color-dark: #121212;
+    --bg-color-dark: #2f2f2f;  /* Changed to a grayish dark color */
     --text-color-light: #000000;
     --text-color-dark: #ffffff;
     --link-color-light: #000000;
@@ -17,11 +17,11 @@
     --button-bg-dark: #ffffff;
     --button-text-light: #ffffff;
     --button-text-dark: #000000;
-    --icon-color-light: #000000; /* Black for light mode */
-    --icon-color-dark: #ffffff;  /* White for dark mode */
-    --scrollbar-bg: #b0b0b0; /* Cool grey background */
-    --scrollbar-thumb: #7f7f7f; /* Cool grey thumb */
-    --scrollbar-thumb-hover: #616161; /* Darker cool grey when hovered */
+    --icon-color-light: #000000;
+    --icon-color-dark: #ffffff;
+    --scrollbar-bg: #b0b0b0;
+    --scrollbar-thumb: #7f7f7f;
+    --scrollbar-thumb-hover: #616161;
 }
 
 /* Body Styling */
@@ -31,27 +31,38 @@ body {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
     transition: background-color 0.3s ease, color 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in animation for the page load */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-    height: 12px; /* Height of the horizontal scrollbar */
+    width: 12px;
+    height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--scrollbar-bg); /* Background color of the scrollbar track */
+    background-color: var(--scrollbar-bg);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb); /* Thumb color */
+    background-color: var(--scrollbar-thumb);
     border-radius: 10px;
-    border: 3px solid var(--scrollbar-bg); /* Space between thumb and track */
+    border: 3px solid var(--scrollbar-bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--scrollbar-thumb-hover); /* Darker thumb when hovered */
+    background-color: var(--scrollbar-thumb-hover);
 }
 
 /* Navigation Bar */
@@ -63,7 +74,18 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: transparent; /* Transparent background */
+    background-color: transparent;
+    opacity: 0;
+    animation: fadeInNav 1s ease-in-out forwards 0.3s; /* Fade-in animation for navbar */
+}
+
+@keyframes fadeInNav {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .navbar .logo {
@@ -128,21 +150,56 @@ body {
     justify-content: center;
     text-align: center;
     height: calc(100vh - 60px);
+    opacity: 0;
+    animation: fadeInHeading 1s ease-in-out forwards 0.5s; /* Fade-in animation for heading */
+}
+
+@keyframes fadeInHeading {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .heading h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    transform: translateY(30px);
+    animation: slideUp 1s ease-in-out forwards 0.7s; /* Slide-up animation for heading text */
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .heading p {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    transform: translateY(20px);
+    animation: slideUp 1s ease-in-out forwards 1s; /* Slide-up animation for heading description */
 }
 
 #btn {
     display: flex;
     justify-content: center;
+    opacity: 0;
+    animation: fadeInButton 1s ease-in-out forwards 1.3s; /* Fade-in animation for button */
+}
+
+@keyframes fadeInButton {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 #btn button {
@@ -155,6 +212,17 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
+    transform: rotateY(90deg); /* Flip button */
+    animation: flipButton 1s ease-in-out forwards 1.5s; /* Flip animation */
+}
+
+@keyframes flipButton {
+    0% {
+        transform: rotateY(90deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
 }
 
 #btn button:hover {
@@ -173,11 +241,33 @@ body {
     padding: 40px 20px;
     background-color: transparent;
     text-align: center;
+    opacity: 0;
+    animation: fadeInFooter 1s ease-in-out forwards 2s; /* Fade-in animation for footer */
+}
+
+@keyframes fadeInFooter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Footer Social Icons */
 .footer-social {
     margin-top: 40px;
+    opacity: 0;
+    animation: fadeInSocialIcons 1s ease-in-out forwards 2.3s; /* Fade-in animation for social icons */
+}
+
+@keyframes fadeInSocialIcons {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .social-icons {
@@ -246,6 +336,17 @@ body.dark-mode .footer-bottom {
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fadeInToggle 1s ease-in-out forwards 2.5s; /* Fade-in animation for mode toggle */
+}
+
+@keyframes fadeInToggle {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .mode-toggle i {

@@ -1,5 +1,9 @@
 // Dark Mode / Light Mode Toggle
 const toggleButton = document.getElementById('modeToggle');
+
+// Set default dark mode
+document.body.classList.add('dark-mode');
+
 toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     if (document.body.classList.contains('dark-mode')) {
@@ -16,4 +20,3 @@ const navLinks = document.querySelector('.nav-links');
 menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
-

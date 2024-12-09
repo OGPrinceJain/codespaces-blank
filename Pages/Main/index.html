@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Engine</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Navbar with Profile Icon -->
+        <nav>
+            <button id="profile-btn">
+                <i class="ri-user-line"></i>
+            </button>
+        </nav>
+
+        <!-- Left Sidebar for Recent Searches (Initially hidden) -->
+        <div class="sidebar" id="sidebar">
+            <ul id="recent-searches">
+                <!-- Recent searches will appear here -->
+            </ul>
+        </div>
+
+        <!-- Main Search Area -->
+        <div class="search-container" id="search-container">
+            <!-- Header -->
+            <header>
+                <h1>AI Search Engine</h1>
+            </header>
+
+            <!-- Search Box and Buttons -->
+            <div class="search-box">
+                <form id="search-form">
+                    <div class="search-input-container">
+                        <input 
+                            type="text" 
+                            id="search-query" 
+                            placeholder="Type your query here..." 
+                            autocomplete="off" 
+                            required 
+                        />
+                        <button type="submit" id="search-btn">
+                            <i class="ri-search-line"></i>
+                        </button>
+                        <button type="button" id="attachment-btn">
+                            <i class="ri-attachment-line"></i>
+                        </button>
+                    </div>
+                </form>
+                <div id="results">
+                    <!-- Search results will appear here -->
+                </div>
+                <p class="disclaimer">StarvieAI can make mistakes.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
